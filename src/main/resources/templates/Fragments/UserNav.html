@@ -1,0 +1,29 @@
+
+<div th:fragment="navigation" class="row">
+
+
+    <div class="menu">
+        <div class="container flex">
+            <!-- Mobile Button -->
+            <div class="mobile-btn">
+                <ion-icon name="grid"></ion-icon>
+            </div>
+
+            <div class="logo">
+                <img
+                        th:src="@{~/Images/logo.png}"
+                        alt=""
+                />
+            </div>
+
+            <ul class="nav">
+                <li class="nav-item"><a th:href="@{~/user/homepage}">Home</a></li>
+                <li class="nav-item"><a th:href="@{~/user/jobs}">JOBs</a></li>
+                <li class="nav-item"><a th:href="@{~/user/services}">About</a></li>
+                <li class="nav-item"><a th:href="@{~/user/contact}">Contact</a></li>
+            </ul>
+
+            <a th:href="@{~/user/profile}" class="btn">Profile</a>
+        </div>
+    </div>
+</div>
