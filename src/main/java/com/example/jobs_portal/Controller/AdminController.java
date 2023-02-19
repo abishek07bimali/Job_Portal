@@ -1,18 +1,12 @@
 package com.example.jobs_portal.Controller;
 
 
-import com.example.jobs_portal.entity.Application;
-import com.example.jobs_portal.entity.Jobs;
-import com.example.jobs_portal.entity.Teams;
-import com.example.jobs_portal.entity.User;
+import com.example.jobs_portal.entity.*;
 import com.example.jobs_portal.pojo.ApplicationPojo;
 import com.example.jobs_portal.pojo.JobsPojo;
 import com.example.jobs_portal.pojo.TeamsPojo;
 import com.example.jobs_portal.pojo.UserPojo;
-import com.example.jobs_portal.service.ApplicationService;
-import com.example.jobs_portal.service.JobsService;
-import com.example.jobs_portal.service.TeamServices;
-import com.example.jobs_portal.service.UserService;
+import com.example.jobs_portal.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -45,6 +39,7 @@ public class AdminController {
     private  final TeamServices teamServices;
     private  final ApplicationService applicationService;
     private  final JobsService jobsService;
+    private  final ContactServices contactServices;
 
 //
     @GetMapping("/dashboard")
@@ -190,21 +185,6 @@ public class AdminController {
 
 
 
-    public Map<String, String> validateRequest(BindingResult bindingResult) {
-        if (!bindingResult.hasErrors()) {
-            return null;
-        }
-        Map<String, String> errors = new HashMap<>();
-        bindingResult.getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String message = error.getDefaultMessage();
-            errors.put(fieldName, message);
-        });
-        return errors;
-
-    }
-
-
 
 
     @GetMapping("/profile")
@@ -218,7 +198,7 @@ public class AdminController {
 
 
     @PostMapping("/updateuser")
-    public String createUser(Model model,@Valid UserPojo userPojo,
+    public String updateUser(Model model,@Valid UserPojo userPojo,
                              BindingResult bindingResult, RedirectAttributes redirectAttributes
     ) throws IOException {
 
@@ -234,6 +214,16 @@ public class AdminController {
 
 
     }
+
+    @GetMapping("/contactlist")
+    public String getContact(Model model) {
+        List<Contact> contacts = contactServices.fetchAll();
+        model.addAttribute("contactList",contacts);
+        return "Admin/ViewContact";
+    }
+
+
+
 
 
     public String getImageBase64(String fileName) {
@@ -265,6 +255,21 @@ public class AdminController {
         return base64;
     }
 
+
+
+    public Map<String, String> validateRequest(BindingResult bindingResult) {
+        if (!bindingResult.hasErrors()) {
+            return null;
+        }
+        Map<String, String> errors = new HashMap<>();
+        bindingResult.getAllErrors().forEach(error -> {
+            String fieldName = ((FieldError) error).getField();
+            String message = error.getDefaultMessage();
+            errors.put(fieldName, message);
+        });
+        return errors;
+
+    }
 
 
 }

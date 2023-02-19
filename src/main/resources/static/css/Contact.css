@@ -139,3 +139,12 @@ ul {
 .get_say_info_sec > li a:hover {
     background-color: var(--secondary);
 }
+
+@media (max-width:800px) {
+    .footer_get_touch_inner{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+}

@@ -24,15 +24,15 @@
           <div class="get_form_inner_text">
             <h3>Get In Touch</h3>
           </div>
-          <form action="#">
+          <form th:method="post" th:action="@{/user/saveContact}" th:object="${contact}" >
             <div class="grid-50-50">
-              <input type="text" placeholder="First Name">
-              <input type="text" placeholder="Last Name">
-              <input type="email" placeholder="Email">
-              <input type="tel" placeholder="Phone/Skype">
+              <input type="text" placeholder="First Name" th:field="*{firstname}">
+              <input type="text" placeholder="Last Name" th:field="*{lastname}">
+              <input type="email" placeholder="Email" th:field="*{email}">
+              <input type="tel" placeholder="Phone number" th:field="*{phone}">
             </div>
             <div class="grid-full">
-              <textarea placeholder="About Your Project" cols="30" rows="10"></textarea>
+              <textarea placeholder="Your Message" cols="30" rows="10" th:field="*{message}"></textarea>
               <input type="submit" value="Submit">
             </div>
           </form>

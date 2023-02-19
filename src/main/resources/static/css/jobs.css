@@ -18,8 +18,8 @@ section{
 .box{
     overflow: hidden;
     min-height: 100vh;
-    /*text-align: center;*/
-    /*margin-bottom: 15px;*/
+    text-align: center;
+    margin-bottom: 15px;
 }
 section h1{
     text-align: center;

@@ -6,12 +6,10 @@ import com.example.jobs_portal.entity.Jobs;
 import com.example.jobs_portal.entity.Teams;
 import com.example.jobs_portal.entity.User;
 import com.example.jobs_portal.pojo.ApplicationPojo;
+import com.example.jobs_portal.pojo.ContactPojo;
 import com.example.jobs_portal.pojo.JobsPojo;
 import com.example.jobs_portal.pojo.UserPojo;
-import com.example.jobs_portal.service.ApplicationService;
-import com.example.jobs_portal.service.JobsService;
-import com.example.jobs_portal.service.TeamServices;
-import com.example.jobs_portal.service.UserService;
+import com.example.jobs_portal.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -41,6 +39,7 @@ public class UserController {
     private  final JobsService jobsService;
     private  final TeamServices teamServices;
     private  final ApplicationService applicationService;
+    private  final ContactServices contactServices;
 
 
     @GetMapping("/homepage")
@@ -219,8 +218,18 @@ public class UserController {
 
     @GetMapping("/contact")
     public String getHomepage(Model model) {
+        model.addAttribute("contact", new ContactPojo());
         return "user/Contact";
     }
+
+    @PostMapping("/saveContact")
+    public String saveContact(@Valid ContactPojo contactPojo){
+        contactServices.save(contactPojo);
+        return "redirect:/user/homepage";
+
+
+    }
+
 
 
     public Map<String, String> validateRequest(BindingResult bindingResult) {
