@@ -16,7 +16,6 @@
 
 <section class="py-5 my-5">
   <div class="containers">
-    <h1 class="mb-5">Account Settings</h1>
     <div class="bg-white shadow rounded-lg d-block d-sm-flex">
        <div class="img-circle text-center mb-3">
           <img th:src="@{~/images/logo.png}" alt="Image" class="shadow">
@@ -27,13 +26,11 @@
           <form th:method="post" th:action="@{/user/saveuser}" th:object="${user}" enctype="multipart/form-data">
             <div class="row">
 
-
-
-              <div class="col-md-6"  style="height: 200px; width: 200px; border-radius: 50%">
+              <div class="col-md-6"  style="height: 200px; width: 200px; justify-content: center">
                 <div class="form-group" >
 
                   <label>Image</label>
-                  <img th:src="'data:image/png;base64,'+${userdata.imageBase64}"  style="width: 100%" >
+                  <img th:src="'data:image/png;base64,'+${userdata.imageBase64}"  style="width: 100%; border-radius: 50%" >
                 </div>
               </div>
 
@@ -84,6 +81,14 @@
     </div>
   </div>
 </section>
+
+<footer class="footer">
+  <div class="container flex">
+    <p class="tertiary">
+      &copy;  All Rights Reserved.@Mero Jagir
+    </p>
+  </div>
+</footer>
 <!-- Ion Icons Js -->
 <script
         type="module"

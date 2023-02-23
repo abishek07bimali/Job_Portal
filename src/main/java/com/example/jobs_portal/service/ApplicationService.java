@@ -18,4 +18,7 @@ public interface ApplicationService {
     List<Application> findApplicationById(Integer id);
     Application fetchById(Integer id);
 
+//    ApplicationPojo update(ApplicationPojo applicationPojo);
+
+
 }

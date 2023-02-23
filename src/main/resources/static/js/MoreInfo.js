@@ -86,7 +86,7 @@ const validateInputs = () => {
     var allowedExtensions = /(\.pdf)$/i;
 
     if(fileval === '') {
-        setError(file, 'Image is required');
+        setError(file, 'CV is required');
     }
     else  if (!allowedExtensions.exec(fileval)) {
         setError(file,"Please upload a PDF file.");

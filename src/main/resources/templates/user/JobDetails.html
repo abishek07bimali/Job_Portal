@@ -5,8 +5,8 @@
     <title>Mero Jagir:Find your dream job here with us</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />-->
 
 
     <link rel="shortcut icon" type="x-icon" th:href="@{~/Images/logo.png}">
@@ -28,22 +28,14 @@
 
 
     <div class="box">
-        <input type="radio" class="tab-toggle" name="tab-toggle" id="tab1" checked>
-        <input type="radio" class="tab-toggle" name="tab-toggle" id="tab2">
 
-        <ul class="tab-list">
-            <li class="tab-item">
-                <label class="tab-trigger" for="tab1">Recent Job</label>
-            </li>
-
-        </ul>
 
         <div class="tab-container">
             <div class="tab-content">
                 <div class="all-jobs">
 
                     <div class="job" th:each="jobs:${joblist}">
-<!--                        <a th:href="@{~/user/moreinfomation/}+${jobs.id}">-->
+                        <!--                        <a th:href="@{~/user/moreinfomation/}+${jobs.id}">-->
                         <img th:src="'data:image/png;base64,'+${jobs.imageBase64}" alt="">
                         <div class="job-desc" >
                             <h6  th:text="${jobs.jobTitle}"></h6>
@@ -75,13 +67,8 @@
 
 </section>
 
-<footer class="footer">
-    <div class="container flex">
-        <p class="tertiary">
-            &copy;  All Rights Reserved.@Mero Jagir
-        </p>
-    </div>
-</footer>
+
+
 
 <!-- Ion Icons Js -->
 <script

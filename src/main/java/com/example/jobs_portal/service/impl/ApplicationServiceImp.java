@@ -51,12 +51,14 @@ public class ApplicationServiceImp implements ApplicationService {
                                 .id_type(application.getId_type())
                                 .resume(getFileName(application.getFile()))
                                 .gender(application.getGender())
+//                                .status(application.getStatus())
                                 .build()
         );
 
         list = allApplication.toList();
         return list;
     }
+
     @Override
     public ApplicationPojo save(ApplicationPojo applicationPojo) throws IOException {
         Application application;
@@ -75,6 +77,7 @@ public class ApplicationServiceImp implements ApplicationService {
         application.setAddress(applicationPojo.getAddress());
         application.setJobs_id(jobsRepo.findById(applicationPojo.getApplied_jobs_FK()).orElseThrow());
         application.setUser_id(userRepo.findById(applicationPojo.getApplied_user()).orElseThrow());
+//        application.setStatus(applicationPojo.getStatus());
 
         if(applicationPojo.getFile()!=null){
             StringBuilder fileNames = new StringBuilder();
@@ -109,7 +112,10 @@ public class ApplicationServiceImp implements ApplicationService {
                 .jobs_id(application.getJobs_id())
                 .address(application.getAddress())
                 .gender(application.getGender())
-                .resume(application.getResume())
+                .id_type(application.getId_type())
+                .id_num(application.getId_num())
+//                .status(application.getStatus())
+                .file(application.getFile())
                 .build();
         return application;
     }

@@ -114,15 +114,14 @@ public class JobsServiceImpl implements JobsService {
         return findAllInList(jobsRepo.findFourRandomData());
     }
 
+    public List<Jobs> findJobsByFirstLetter(String letter) {
+        return jobsRepo.findByNameStartingWith(letter);
+    }
+
     @Override
     public Jobs fetchById(Integer id) {
         return jobsRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
     }
-
-//    @Override
-//    public List<Jobs> fetchAllById(Integer id) {
-//        return jobsRepo.fetchAllById(id);
-//    }
 
     public String getImageBase64(String fileName) {
         if (fileName!=null) {

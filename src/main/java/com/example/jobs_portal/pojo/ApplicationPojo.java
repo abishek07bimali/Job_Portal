@@ -20,7 +20,7 @@ public class ApplicationPojo {
     private  String id_type;
     @NotEmpty(message = "id_num cannot be empty")
     private  String id_num;
-//    @NotEmpty(message = "applied_job_fk cannot be empty")
+//    private  String status;
     private int  Applied_jobs_FK;
 //    @NotEmpty(message = "Applied_user cannot be empty")
     private int  Applied_user;
@@ -35,5 +35,6 @@ public class ApplicationPojo {
         this.id_num=application.getId_num();
         this.Applied_jobs_FK=application.getJobs_id().getId();
         this.Applied_user=application.getUser_id().getId();
+//        this.status=application.getStatus();
     }
 }

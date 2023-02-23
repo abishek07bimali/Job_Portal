@@ -7,11 +7,12 @@
 }
 /* Styling for the container */
 .containers {
-    max-width: 1200px;
+    max-width: 500px;
     margin: 0 auto;
     display: flex;
     /*flex-direction: column;*/
     justify-content: center;
+    text-align: center;
     align-items: center;
 }
 /* Styling for the h1 heading */
@@ -51,7 +52,7 @@ h1 {
 /* Styling for the image and username text in the profile tab navigation */
 .img-circle {
     width: 150px;
-    height: 160px;
+    /*height: 160px;*/
     border-radius: 50%;
 }
 img {
@@ -61,6 +62,7 @@ img {
 
 .mb-4{
     margin: 10px;
+    color: black;
 }
 .row{
     margin: 5px;
@@ -88,8 +90,8 @@ img {
 }
 /* Styling for the form in the tab content */
 .form-control {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 0.25rem;
     border: 1px solid #e9ecef;
 }

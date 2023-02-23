@@ -109,7 +109,7 @@
                 <div class="fields">
                     <div class="input-field">
                         <label>CV</label>
-                        <input type="file" id="file" name="file" accept="application/pdf/*" >
+                        <input type="file" id="file" name="file" accept="application/pdf/*" th:value="${applyApplication.file}">
                         <div class="error"></div>
                     </div>
                 </div>

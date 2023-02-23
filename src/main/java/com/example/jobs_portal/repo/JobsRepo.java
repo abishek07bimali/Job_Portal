@@ -21,10 +21,13 @@ public interface JobsRepo  extends JpaRepository<Jobs, Integer> {
 @Query(value = "SELECT * FROM jobs ORDER BY RANDOM() LIMIT 6", nativeQuery = true)
 List<Jobs> findFourRandomData();
 
-//    @Query(value = "SELECT * FROM jobs where id=?1", nativeQuery = true)
-//    List<Jobs> fetchAllById(Integer id);
+
     @Query(value = "select * from jobs where job_title=?1", nativeQuery = true)
     Optional<Jobs> findByjob_title(String jobtitle);
+
+
+    @Query(value = "SELECT * FROM jobs WHERE category =?1", nativeQuery = true)
+    List<Jobs> findByNameStartingWith(String letter);
 
 
 

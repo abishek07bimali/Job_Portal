@@ -10,6 +10,7 @@ import com.example.jobs_portal.pojo.ContactPojo;
 import com.example.jobs_portal.pojo.JobsPojo;
 import com.example.jobs_portal.pojo.UserPojo;
 import com.example.jobs_portal.service.*;
+import com.example.jobs_portal.service.impl.JobsServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -40,6 +41,7 @@ public class UserController {
     private  final TeamServices teamServices;
     private  final ApplicationService applicationService;
     private  final ContactServices contactServices;
+    private  final JobsServiceImpl jobsServiceimpl;
 
 
     @GetMapping("/homepage")
@@ -88,11 +90,11 @@ public class UserController {
         if (requestError != null) {
 //            model.addAttribute("message","invalid");
             redirectAttributes.addFlashAttribute("requestError", requestError);
-            return "redirect:/login";
+            return "redirect:/user/login";
         }
         userService.save(userPojo);
         redirectAttributes.addFlashAttribute("successMsg", "User saved successfully");
-        return "redirect:/login";
+        return "redirect:/user/login";
 
 
     }
@@ -245,6 +247,30 @@ public class UserController {
         return errors;
 
     }
+
+
+
+
+//    @GetMapping("/jobs/{letter}")
+//    public String getEmployeesByFirstLetter(@PathVariable String letter,Model model) {
+//     List<Jobs> jobs=   jobsService.findJobsByFirstLetter(letter);
+//     model.addAttribute("searchjobs",jobs);
+//        return "user/Search";
+//    }
+
+
+    @GetMapping("/search/{query}")
+    public String search(@PathVariable String query, Model model) {
+     List<Jobs> jobs=   jobsService.findJobsByFirstLetter(query);
+     model.addAttribute("searchjobs",jobs);
+        return "user/Search";
+    }
+
+    @GetMapping("description")
+    public String getJobDescription() {
+        return "/user/JobDetails";
+    }
+
 
 
 

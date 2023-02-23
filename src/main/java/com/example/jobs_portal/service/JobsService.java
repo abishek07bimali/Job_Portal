@@ -18,6 +18,7 @@ public interface JobsService {
 
     List<Jobs> getFourRandomData();
 
+    List<Jobs> findJobsByFirstLetter(String letter);
 
 
 }

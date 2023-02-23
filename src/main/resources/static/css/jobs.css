@@ -161,6 +161,9 @@ p span {
     border-radius: 10px;
     text-transform: capitalize;
 }
+.job-desc a{
+    text-align: right;
+}
 
 /* responsive */
 @media (max-width: 770px) {

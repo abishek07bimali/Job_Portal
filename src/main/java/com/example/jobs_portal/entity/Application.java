@@ -35,6 +35,9 @@ public class Application {
     @Column(name = "id_num",nullable = false)
     private String id_num;
 
+//    @Column(name = "status")
+//    private String status;
+
 
     @Transient
     private String resume;
