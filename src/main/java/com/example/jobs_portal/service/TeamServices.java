@@ -16,4 +16,8 @@ public interface TeamServices {
     Teams fetchById(Integer id);
 
     void deleteById(Integer id);
+
+    Long countRows();
+    long countRowsLastMonth();
+
 }

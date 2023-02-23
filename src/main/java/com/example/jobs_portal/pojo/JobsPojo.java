@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -55,6 +57,9 @@ public class JobsPojo {
 
     private MultipartFile image;
 
+    private LocalDateTime date;
+
+
     public JobsPojo(Jobs jobs) {
         this.id=jobs.getId();
         this.job_title=jobs.getJobTitle();
@@ -75,5 +80,7 @@ public class JobsPojo {
         this.salary=jobs.getSalary();
         this.Experience1=jobs.getExperience1();
         this.Experience2=jobs.getExperience2();
+        this.date=jobs.getCreatedAt();
+
     }
 }

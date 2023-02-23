@@ -37,3 +37,13 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+.All_button{
+    background-color: #5041BC;
+    border-radius:20px ;
+    padding-top:7px ;
+    padding-bottom:7px ;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: white;
+}

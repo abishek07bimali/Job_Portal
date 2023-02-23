@@ -8,6 +8,7 @@ import com.example.jobs_portal.service.ContactServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,6 +22,8 @@ public class ContactServiceImpl implements ContactServices {
         if (contactPojo.getId() != null) {
             contact.setId(contactPojo.getId());
         }
+        contact.setCreatedAt(contact.getCreatedAt());
+
         contact.setEmail(contactPojo.getEmail());
         contact.setFirstname(contactPojo.getFirstname());
         contact.setLastname(contactPojo.getLastname());
@@ -33,5 +36,17 @@ public class ContactServiceImpl implements ContactServices {
     @Override
     public List<Contact> fetchAll() {
         return contactRepo.findAll();
+    }
+
+    @Override
+    public long countRowsLastMonth() {
+        LocalDate oneMonthAgo = LocalDate.now();
+        System.out.println(oneMonthAgo);
+        return contactRepo.countByDateAfter(oneMonthAgo);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        contactRepo.deleteById(id);
     }
 }

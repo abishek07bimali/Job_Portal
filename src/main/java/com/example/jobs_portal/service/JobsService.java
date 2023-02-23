@@ -20,5 +20,9 @@ public interface JobsService {
 
     List<Jobs> findJobsByFirstLetter(String letter);
 
+    Long countRows();
+
+    long countRowsLastMonth();
+
 
 }

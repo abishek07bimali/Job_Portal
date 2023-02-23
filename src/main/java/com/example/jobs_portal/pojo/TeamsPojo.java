@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -35,6 +37,7 @@ public class TeamsPojo {
     private  String department;
     private MultipartFile image;
 
+    private LocalDateTime date;
 
     public TeamsPojo(Teams teams) {
         this.id=teams.getId();
@@ -46,5 +49,7 @@ public class TeamsPojo {
         this.github=teams.getGithub();
         this.linkedin=teams.getLinkedin();
         this.department=teams.getDepartment();
+        this.date=teams.getCreatedAt();
+
     }
 }

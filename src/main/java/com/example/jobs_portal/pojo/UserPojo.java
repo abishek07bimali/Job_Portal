@@ -7,6 +7,8 @@ import lombok.*;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Getter
 @Setter
@@ -25,11 +27,14 @@ public class UserPojo {
     private  String password;
     private MultipartFile image;
 
+    private LocalDateTime date;
+
     public UserPojo(User user) {
       this.id=user.getId();
       this.email=user.getEmail();
       this.mobile_no=user.getMobileNo();
       this.fullname=user.getFullname();
+      this.date=user.getCreatedAt();
       this.password=user.getPassword();
     }
 }

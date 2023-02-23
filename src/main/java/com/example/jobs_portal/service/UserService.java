@@ -19,4 +19,7 @@ public interface UserService {
 
     User findByEmail(String email);
 //    public boolean checkEmail(String email);
+
+    Long countRows();
+    long countRowsLastMonth();
 }

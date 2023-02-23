@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
@@ -37,6 +39,7 @@ public class UserServiceImpl implements UserService {
 //        if(userPojo.getId()!=null){
 //            user.setId(user.getId());
 //        }
+        user.setCreatedAt(user.getCreatedAt());
         user.setEmail(userPojo.getEmail());
         user.setFullname(userPojo.getFullname());
         user.setMobileNo(userPojo.getMobile_no());
@@ -94,11 +97,17 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-//    @Override
-//    public boolean checkEmail(String email) {
-//       return userRepo.existsByEmail(email);
-//
-//    }
+    @Override
+    public Long countRows() {
+        return userRepo.countAllRows();
+    }
+
+    @Override
+    public long countRowsLastMonth() {
+        LocalDate oneMonthAgo = LocalDate.now().minusMonths(1);
+        return userRepo.countByDateAfter(oneMonthAgo);
+    }
+
 
     public String getImageBase64(String fileName) {
         String filePath = System.getProperty("user.dir") + "/Jobs_Image_Server/";

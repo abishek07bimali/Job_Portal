@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,5 +31,10 @@ List<Jobs> findFourRandomData();
     List<Jobs> findByNameStartingWith(String letter);
 
 
+    @Query(value = "select COUNT(*) from jobs", nativeQuery = true)
+    Long countAllRows();
 
+
+    @Query(value = "SELECT COUNT(*) FROM jobs WHERE created_at >= ?1", nativeQuery = true)
+    Long countByDateAfter(LocalDate date);
 }

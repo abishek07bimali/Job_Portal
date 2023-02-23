@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Getter
 @Setter
@@ -25,6 +27,8 @@ public class ApplicationPojo {
 //    @NotEmpty(message = "Applied_user cannot be empty")
     private int  Applied_user;
     private MultipartFile file;
+    private LocalDateTime date;
+
 
 
     public ApplicationPojo(Application application) {
@@ -35,6 +39,6 @@ public class ApplicationPojo {
         this.id_num=application.getId_num();
         this.Applied_jobs_FK=application.getJobs_id().getId();
         this.Applied_user=application.getUser_id().getId();
-//        this.status=application.getStatus();
+        this.date=application.getCreatedAt();
     }
 }

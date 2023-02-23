@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
@@ -74,6 +75,9 @@ public class JobsServiceImpl implements JobsService {
         if(jobsPojo.getId()!=null){
             jobs.setId(jobsPojo.getId());
         }
+        jobs.setCreatedAt(jobs.getCreatedAt());
+
+
         jobs.setTime_description(jobsPojo.getTime_description());
         jobs.setType(jobsPojo.getType());
         jobs.setCategory(jobsPojo.getCategory());
@@ -121,6 +125,19 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public Jobs fetchById(Integer id) {
         return jobsRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
+    }
+
+
+    @Override
+    public Long countRows() {
+        return jobsRepo.countAllRows();
+    }
+
+
+    @Override
+    public long countRowsLastMonth() {
+        LocalDate oneMonthAgo = LocalDate.now().minusMonths(1);
+        return jobsRepo.countByDateAfter(oneMonthAgo);
     }
 
     public String getImageBase64(String fileName) {

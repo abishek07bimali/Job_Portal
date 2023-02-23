@@ -51,7 +51,7 @@ public class UserController {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             for (GrantedAuthority grantedAuthority : authorities) {
                 if (grantedAuthority.getAuthority().equals("Admin")) {
-                    return "redirect:/admin/jobslist";
+                    return "redirect:/admin/dashboard";
                 }
             }
         }
@@ -90,11 +90,11 @@ public class UserController {
         if (requestError != null) {
 //            model.addAttribute("message","invalid");
             redirectAttributes.addFlashAttribute("requestError", requestError);
-            return "redirect:/user/login";
+            return "redirect:/user/create";
         }
         userService.save(userPojo);
         redirectAttributes.addFlashAttribute("successMsg", "User saved successfully");
-        return "redirect:/user/login";
+        return "redirect:/user/create";
 
 
     }
@@ -205,7 +205,7 @@ public class UserController {
     public String editUser(@PathVariable("id") Integer id, Model model) {
         User user = userService.fetchById(id);
         model.addAttribute("user", new UserPojo(user));
-        return "/user/create";
+        return "redirect:/user/create";
     }
 
     @GetMapping("/delete/{id}")

@@ -8,5 +8,8 @@ import java.util.*;
 public interface ContactServices {
     ContactPojo save(ContactPojo contactPojo);
     List<Contact> fetchAll();
+    long countRowsLastMonth();
+
+    void deleteById(Integer id);
 
 }

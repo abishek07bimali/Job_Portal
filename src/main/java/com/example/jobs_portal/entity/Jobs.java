@@ -2,6 +2,9 @@ package com.example.jobs_portal.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -68,5 +71,9 @@ public class Jobs {
 
     @Transient
     private String imageBase64;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
 }

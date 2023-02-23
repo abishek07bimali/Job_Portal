@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
 
   <link rel="stylesheet" th:href="@{~/css/AdminCss/adminNav.css}">
-  <title>View Application</title>
+  <title>MeroJagir: View All Application</title>
 </head>
 <body>
 <!--Main Navigation-->
@@ -58,7 +58,7 @@
           <td th:text="${user.getJobs_id().getCategory()}"></td>
           <td><img th:src="'data:image/png;base64,'+${user.file}" width="100" height="100"/></td>
 <!--          <td> <a class="" th:href="@{~/user/delete/}+${user.id}" >delete</a></td>-->
-          <td> <a class="" href="" >Verify</a></td>
+          <td> <a class="All_button" href="" >Verify</a></td>
 
 
         </tr>

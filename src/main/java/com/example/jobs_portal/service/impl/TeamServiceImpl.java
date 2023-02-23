@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
@@ -58,6 +59,8 @@ public class TeamServiceImpl implements TeamServices {
         if(teamsPojo.getId()!=null){
             teams.setId(teamsPojo.getId());
         }
+        teams.setCreatedAt(teams.getCreatedAt());
+
         teams.setEmail(teamsPojo.getEmail());
         teams.setFullname(teamsPojo.getFullname());
         teams.setAddress(teamsPojo.getAddress());
@@ -82,6 +85,17 @@ public class TeamServiceImpl implements TeamServices {
     @Override
     public Teams fetchById(Integer id) {
         return teamsRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
+    }
+
+    @Override
+    public Long countRows() {
+        return teamsRepo.countAllRows();
+    }
+
+    @Override
+    public long countRowsLastMonth() {
+        LocalDate oneMonthAgo = LocalDate.now().minusMonths(1);
+        return teamsRepo.countByDateAfter(oneMonthAgo);
     }
 
     @Override

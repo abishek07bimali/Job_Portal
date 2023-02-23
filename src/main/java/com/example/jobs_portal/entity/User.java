@@ -2,9 +2,12 @@ package com.example.jobs_portal.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -42,6 +45,9 @@ public class User implements UserDetails {
     @Transient
     private String imageBase64;
 
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
 //    @OneToMany(targetEntity =Application.class,cascade = CascadeType.ALL)
 //    @JoinColumn(name = "Applied_jobs_FK", referencedColumnName = "id")

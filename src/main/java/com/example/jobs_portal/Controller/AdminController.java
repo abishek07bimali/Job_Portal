@@ -44,7 +44,34 @@ public class AdminController {
 //
     @GetMapping("/dashboard")
     public String getHomepage(Model model) {
-        return "Admin/AdminDashboard";
+        Long application=applicationService.countRows();
+        model.addAttribute("app",application);
+
+        Long users=userService.countRows();
+        model.addAttribute("userss",users);
+
+        Long jobs=jobsService.countRows();
+        model.addAttribute("jobs",jobs);
+
+        Long teams=teamServices.countRows();
+        model.addAttribute("teams",teams);
+
+        Long dateTime= userService.countRowsLastMonth();
+        model.addAttribute("date",dateTime);
+
+        Long countTeam = teamServices.countRowsLastMonth();
+        model.addAttribute("countTeam",countTeam);
+
+        Long countJobs= jobsService.countRowsLastMonth();
+        model.addAttribute("countJobs",countJobs);
+
+        Long countApp= applicationService.countRowsLastMonth();
+        model.addAttribute("countApp",countApp);
+
+        Long countContact= contactServices.countRowsLastMonth();
+        model.addAttribute("countCont",countContact);
+
+        return "Admin/dashboard";
     }
 
 //    @GetMapping("/profile")
@@ -155,7 +182,7 @@ public class AdminController {
         return "Admin/AddTeams";
     }
 
-    @GetMapping("/deletemrm/{id}")
+    @GetMapping("/deletemem/{id}")
     public String deleteMembers(@PathVariable("id") Integer id) {
         teamServices.deleteById(id);
         return "redirect:/admin/seeteams";
@@ -221,6 +248,14 @@ public class AdminController {
         model.addAttribute("contactList",contacts);
         return "Admin/ViewContact";
     }
+
+
+    @GetMapping("/deleteCont/{id}")
+    public String deleteContact(@PathVariable("id") Integer id) {
+        contactServices.deleteById(id);
+        return "redirect:/admin/application";
+    }
+
 
 
 

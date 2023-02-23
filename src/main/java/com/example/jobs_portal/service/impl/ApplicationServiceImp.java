@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
@@ -71,6 +72,8 @@ public class ApplicationServiceImp implements ApplicationService {
             application.setId(application.getId());
         }
 //        Application application=new Application();
+        application.setCreatedAt(application.getCreatedAt());
+
         application.setId_type(applicationPojo.getId_type());
         application.setId_num(applicationPojo.getId_num());
         application.setGender(applicationPojo.getGender());
@@ -118,6 +121,17 @@ public class ApplicationServiceImp implements ApplicationService {
                 .file(application.getFile())
                 .build();
         return application;
+    }
+
+    @Override
+    public Long countRows() {
+        return applicationRepo.countAllRows();
+    }
+
+    @Override
+    public long countRowsLastMonth() {
+        LocalDate oneMonthAgo = LocalDate.now().minusMonths(1);
+        return applicationRepo.countByDateAfter(oneMonthAgo);
     }
 
     public String getFileName(String fileName) {

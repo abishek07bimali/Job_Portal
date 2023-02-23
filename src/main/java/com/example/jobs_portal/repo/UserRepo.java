@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Repository
@@ -14,8 +15,10 @@ public interface UserRepo extends JpaRepository<User, Integer> {
     Optional<User> findByEmail(String email);
 
 
-//    public boolean existsByEmail(String email);
+    @Query(value = "select COUNT(*) from users", nativeQuery = true)
+    Long countAllRows();
 
-
+    @Query(value = "SELECT COUNT(*) FROM users WHERE created_at >= ?1", nativeQuery = true)
+    Long countByDateAfter(LocalDate date);
 }
 

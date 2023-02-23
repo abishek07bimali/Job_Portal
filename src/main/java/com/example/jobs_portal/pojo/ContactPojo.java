@@ -4,6 +4,8 @@ import com.example.jobs_portal.entity.Contact;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Getter
 @Setter
@@ -22,6 +24,8 @@ public class ContactPojo {
     @NotEmpty(message = "phone cannot be empty")
     private  String phone;
 
+    private LocalDateTime date;
+
     public ContactPojo(Contact contact){
         this.id=contact.getId();
         this.email=contact.getEmail();
@@ -29,5 +33,6 @@ public class ContactPojo {
         this.phone=contact.getMobile_no();
         this.firstname=contact.getFirstname();
         this.lastname=contact.getLastname();
+        this.date=contact.getCreatedAt();
     }
 }

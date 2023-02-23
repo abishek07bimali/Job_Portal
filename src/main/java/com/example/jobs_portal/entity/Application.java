@@ -2,8 +2,10 @@ package com.example.jobs_portal.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Builder
@@ -49,6 +51,9 @@ public class Application {
     @JoinColumn(name = "Applied_User", referencedColumnName = "id")
     private User user_id;
 
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
 }
 
